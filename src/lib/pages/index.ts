@@ -29,7 +29,9 @@ export const getPages = (url: string, modules: Record<string, unknown>): string[
 		.map((path) => path.replace(/(\/index)?(@.*)?.svelte/, ''))
 		// Set empty path string to '/' ('./index.svelte' is converted to '')
 		.map((path) => path || '/')
-		.map((path) => path.replace('+page', ''))
+		.map((path) => path.replace('/+page', ''))
+		.map((path) => path.replace('/+layout', ''))
+		.filter((path) => path)
 		.sort();
 
 	return paths;
